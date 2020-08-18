@@ -1,0 +1,44 @@
+.row {
+  max-width: $grid-width;
+  // background-color: #eee;
+  margin: 0 auto;
+  color: #000;
+  
+  // ici on lui dit d'appliquer au a .row un margin-bottom sauf au :last-child d'ou (&:not(:last-child))
+  &:not(:last-child){
+    margin-bottom: $espace-vertical;
+  }
+ @include clearFix;
+  // ceci est un attribut on lui dit ici selectionne moi tout les elements qui on une classe
+  // qui commence par "col-" grace au mot clé " ^ " et pour selectionner toutes les classes 
+  // qui finissent par  col- on devait ecrire "[class$="col-"]
+  [class^="col-"]{
+    // background-color: orangered;
+    float: left;
+    &:not(:last-child){
+      margin-right: $espace-horizontal;
+    }
+
+  }
+  .col-1-of-2 {
+    width: calc((100% - #{$espace-horizontal}) / 2);
+   
+  }
+
+  .col-1-of-3 {
+    width: calc((100% - 2 * #{$espace-horizontal}) / 3  );
+  }
+
+  .col-2-of-3 {
+    width: calc( 2 * ((100% - 2 * #{$espace-horizontal}) / 3) + #{$espace-horizontal});
+  }
+  .col-1-of-4 {
+    width: calc((100% - 3 * #{$espace-horizontal}) / 4  );
+  }
+  .col-2-of-4 {
+    width: calc( 2 * ((100% - 3 * #{$espace-horizontal}) / 4)  + #{$espace-horizontal} );
+  }
+  .col-3-of-4 {
+    width: calc( 3 * ((100% - 3 * #{$espace-horizontal}) / 4)  + (#{$espace-horizontal} * 2) );
+  }
+}
